@@ -29,7 +29,11 @@ export const SignUp=async(req,res)=>{
 export const Login = async (req, res) => {
 
   
-                const { email, password } = req.body;  
+                console.log(req.body);   
+                // console.log(JSON.parse(req.body));
+
+                const { email, password } = req.body;     
+ 
                 
                 // 1) Check if email and password exist
                 if (!email || !password) {
@@ -42,8 +46,11 @@ export const Login = async (req, res) => {
                 // 2) Check if user exists && password is correct
                 const user=await userModel.findOne({ Email: email });      
                 
-                if(!user?.Email===email || !(user?.Password===password)){
-                  return res.status(400).json({message:'Incorrect email or password !'});  
+                if(!user?.Email===email || !(user?.Password===password)){  
+                  // return res.status(400).json({message:'Incorrect email or password !'});  
+                  return res.status(400).json('Incorrect email or password !');
+                    
+                    // return res.status(400).json(new Error("I'm Evil")); 
                 }
 
                 

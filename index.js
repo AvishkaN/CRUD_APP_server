@@ -16,14 +16,15 @@ dotenv.config();    // enviramental variable
 
   
 
-// avoid erros and warnings
+// avoid erros and warnings  
 app.use(bodyParser.json({limit:"30mb",extended:true}));
-app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));   
-app.use(cors());     
+app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));    
+
+app.use(cors());      
 
 
-app.use('/products',productRouter);      
-app.use('/user',userRouter);     
+app.use('/products',productRouter);       
+app.use('/user',userRouter);       
 
 
 app.get('/',(req,res)=>{
