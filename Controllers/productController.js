@@ -5,7 +5,6 @@ export const getAllProducts=async(req,res)=>{
 
     try{
         const allProducts=await productModel.find();
-        // const allProducts=await productModel.deleteMany();
 
         res.status(200).json(allProducts);
         
@@ -41,7 +40,6 @@ export const editProduct = async (req, res) => {
 
     const { id } = req.params;    
 
-    // const { title, message, creator, selectedFile, tags } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No Product with id: ${id}`);
     

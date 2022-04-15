@@ -4,13 +4,11 @@ import { Login, SignUp } from "../Controllers/userController.js";
 
 const router=express.Router();  
 
-// localhost:5000/posts
+// localhost:5000/user
 
 router.get('/',getAllProducts);
 router.post('/',SignUp);
 router.post('/logIn',Login);
-// router.patch('/:id',editProduct);
-// router.delete('/:id',deleteProduct);
 
 
 

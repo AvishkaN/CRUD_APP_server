@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 import userModel from "../Models/userModel.js"; 
 
  
@@ -29,8 +30,6 @@ export const SignUp=async(req,res)=>{
 export const Login = async (req, res) => {
 
   
-                console.log(req.body);   
-                // console.log(JSON.parse(req.body));
 
                 const { email, password } = req.body;     
  
@@ -46,12 +45,18 @@ export const Login = async (req, res) => {
                 // 2) Check if user exists && password is correct
                 const user=await userModel.findOne({ Email: email });      
                 
-                if(!user?.Email===email || !(user?.Password===password)){  
-                  // return res.status(400).json({message:'Incorrect email or password !'});  
+
+                // check hashing password
+                const checkPassword= await bcrypt.compare(password, user?.Password);
+
+
+                // if incorrect email or password 
+                if(!user?.Email===email || !checkPassword){  
                   return res.status(400).json('Incorrect email or password !');
                     
-                    // return res.status(400).json(new Error("I'm Evil")); 
                 }
+
+
 
                 
 
