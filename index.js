@@ -28,7 +28,7 @@ app.use('/user',userRouter);
 
 
 app.get('/',(req,res)=>{
-  res.send('This CRUD APP API');
+  res.send('This CRUD APP API $$ ');
 });         
 
 
